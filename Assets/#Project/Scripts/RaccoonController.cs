@@ -26,15 +26,15 @@ public class RaccoonController : MonoBehaviour
     {
         actions.FindActionMap("Raccoon").Enable();
         actions.FindActionMap("Raccoon").FindAction("Jump").performed += OnJump;
-        actions.FindActionMap("Raccoon").FindAction("Down").performed += OnCrouch;
-        actions.FindActionMap("Raccoon").FindAction("Down").canceled += OnStandUp;
+        actions.FindActionMap("Raccoon").FindAction("Crouch").performed += OnCrouch;
+        actions.FindActionMap("Raccoon").FindAction("Crouch").canceled += OnStandUp;
     }
     void OnDisable()
     {
         actions.FindActionMap("Raccoon").Disable();
         actions.FindActionMap("Raccoon").FindAction("Jump").performed -= OnJump;
-        actions.FindActionMap("Raccoon").FindAction("Down").performed -= OnCrouch;
-        actions.FindActionMap("Raccoon").FindAction("Down").canceled -= OnStandUp;
+        actions.FindActionMap("Raccoon").FindAction("Crouch").performed -= OnCrouch;
+        actions.FindActionMap("Raccoon").FindAction("Crouch").canceled -= OnStandUp;
     }
     void Start()
     {

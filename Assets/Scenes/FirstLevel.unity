@@ -443,6 +443,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2025856517}
     m_Modifications:
+    - target: {fileID: -537111117375232209, guid: cb282a1f5f07163419ea89f932284512, type: 3}
+      propertyPath: m_Size.x
+      value: 2.028811
+      objectReference: {fileID: 0}
+    - target: {fileID: -537111117375232209, guid: cb282a1f5f07163419ea89f932284512, type: 3}
+      propertyPath: m_Size.y
+      value: 1.9366786
+      objectReference: {fileID: 0}
+    - target: {fileID: -537111117375232209, guid: cb282a1f5f07163419ea89f932284512, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.5144055
+      objectReference: {fileID: 0}
+    - target: {fileID: -537111117375232209, guid: cb282a1f5f07163419ea89f932284512, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.46833932
+      objectReference: {fileID: 0}
     - target: {fileID: 2022073021090699014, guid: cb282a1f5f07163419ea89f932284512, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.2646627
@@ -2591,7 +2607,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1776139437
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2883,7 +2899,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2025856517}
-  - component: {fileID: 2025856518}
   m_Layer: 0
   m_Name: plateform1
   m_TagString: Untagged
@@ -2912,33 +2927,6 @@ Transform:
   - {fileID: 1500222671}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &2025856518
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025856516}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &2061796491
 PrefabInstance:
   m_ObjectHideFlags: 0
