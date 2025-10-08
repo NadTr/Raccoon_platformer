@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+
 [RequireComponent(typeof(Animator))]
 public class ChestNutsManager : MonoBehaviour
 {
@@ -17,10 +18,10 @@ public class ChestNutsManager : MonoBehaviour
             StartCoroutine(ChestnutCaught(delay));
         }
     }
-    private IEnumerator ChestnutCaught(float delay = 0f)
+    private IEnumerator ChestnutCaught(float delay = 0.2f)
     {
         animator.SetBool("is caught", true);
-        yield return new WaitForSeconds(delay + 0.5f);
+        yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
     }
 }
