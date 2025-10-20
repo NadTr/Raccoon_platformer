@@ -85,7 +85,7 @@ public class RaccoonController : MonoBehaviour
         spriteRenderer.flipX = xAxis.ReadValue<float>() < 0;
 
         if (isCrouching) return;
-        Debug.Log(speed + tmpSpeed);
+        // Debug.Log(speed + tmpSpeed);
         // transform.Translate(xAxis.ReadValue<float>() * (speed + tmpSpeed) * Time.deltaTime, 0f, 0f);
         transform.position += Vector3.right * ((xAxis.ReadValue<float>() * speed) + tmpSpeed) * Time.deltaTime;
         animator.SetFloat("speed", Math.Abs(xAxis.ReadValue<float>()));
@@ -128,7 +128,7 @@ public class RaccoonController : MonoBehaviour
                 throw new System.ArgumentException("Prefab doesn't have a componenent that have implement MovingPlatefromBehavior");
             }
             tmpSpeed = collision.GetComponentInParent<MovingPlatefromBehavior>().GetSpeed();
-            Debug.Log("moving");
+            // Debug.Log("moving");
         }
     }
     void OnTriggerExit2D(Collider2D collision)
@@ -140,7 +140,7 @@ public class RaccoonController : MonoBehaviour
                 throw new System.ArgumentException("Prefab doesn't have a componenent that have implement MovingPlatefromBehavior");
             }
             tmpSpeed = 0;
-            Debug.Log("not moving");       
+            // Debug.Log("not moving");       
         }
     }
 

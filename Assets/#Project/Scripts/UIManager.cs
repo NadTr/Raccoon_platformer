@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     public void IncreaseCounter()
     {
         counter++;
-        Debug.Log($"increase counter = {counter}");
+        // Debug.Log($"increase counter = {counter}");
         score.SetText($"Chestnuts : {counter}");
     }
 }
