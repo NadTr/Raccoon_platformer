@@ -25,9 +25,9 @@ public class MenuEnd : MonoBehaviour
     }
     private void SetText()
     {
-        string minutes = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("gameTime")).ToString("%m' min.'");
-        string secondes = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("gameTime")).ToString("%s' sec.'");
+        string minutes = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("gameTime")).ToString("%m' min'");
+        string secondes = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("gameTime")).ToString("%s' sec'");
 
-        textEndGame.SetText($"Chestnuts caught: {PlayerPrefs.GetInt("chestnuts")}/100 \n Number of falls: {PlayerPrefs.GetInt("falls")} \n Time to complete: {minutes} and {secondes}");
+        textEndGame.SetText($" Chestnuts caught: {PlayerPrefs.GetInt("chestnuts")}/100 \n Number of falls: {PlayerPrefs.GetInt("falls")} \n Time to complete: {minutes} and {secondes}");
     }
 }

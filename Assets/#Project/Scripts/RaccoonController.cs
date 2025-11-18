@@ -20,6 +20,7 @@ public class RaccoonController : MonoBehaviour
     private float speed = 3f;
     private float jumpForce = 5f;
     private bool isJumping = false;
+    private int numberOfJumps = 2;
     private bool isCrouching = false;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -64,7 +65,7 @@ public class RaccoonController : MonoBehaviour
 
             Vector3 origin = transform.position + Vector3.down * 0.9f;
             Vector3 direction = Vector3.down * 2f;
-            RaycastHit2D belowHit = Physics2D.Raycast(origin, direction, 1.5f);
+            RaycastHit2D belowHit = Physics2D.Raycast(origin, direction, .5f);
             Debug.DrawRay(origin, direction, Color.magenta);
 
             if (belowHit.collider != null)
@@ -90,7 +91,13 @@ public class RaccoonController : MonoBehaviour
     {
         animator.SetBool("on jump", true);
         isJumping = true;
-        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+
+        if (numberOfJumps <= 0) return;
+
+        if (numberOfJumps > 1) rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        if (numberOfJumps <= 1) rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        numberOfJumps--;
+
     }
     private void OnCrouch(InputAction.CallbackContext callbackContext)
     {
@@ -110,6 +117,14 @@ public class RaccoonController : MonoBehaviour
     public void CaughtAChestnut()
     {
         gm.IncreaseCounter();
+    }
+     void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Plateform" || collision.gameObject.tag == "Moving plateform")
+        {
+            numberOfJumps = 2;
+            // animator.SetBool("on fall", false);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
