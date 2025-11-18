@@ -24,6 +24,7 @@ public class MovingPlatefromBehavior : MonoBehaviour
 
     public void Process()
     {
+        Debug.Log("m p process");
         Move();
 
         Vector3 origin = transform.position + Vector3.up * 0.4f + (goRight ? 3.5f : -0.5f) * Vector3.right * 1f;
@@ -43,7 +44,7 @@ public class MovingPlatefromBehavior : MonoBehaviour
     }
     private void Move()
     {
-        transform.Translate((goRight ? 1f : -1f) * speed * Time.deltaTime, 0f, 0f);
+        this.transform.Translate((goRight ? 1f : -1f) * speed * Time.deltaTime, 0f, 0f);
     }
 
 }
