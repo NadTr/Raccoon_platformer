@@ -3,11 +3,10 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform player;
+    [SerializeField] private float yGap;
 
-    // Update is called once per frame
     void Update()
     {
-        // Vector3 pos = transform.position;
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y , - 10f);
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + yGap , - 10f);
     }
 }

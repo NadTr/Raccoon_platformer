@@ -26,6 +26,7 @@ public class RaccoonController : MonoBehaviour
     private Collider2D coll;
     private int score;
     float tmpSpeed = 0 ;
+    Vector3 startPos;
     void OnEnable()
     {
         actions.FindActionMap("Raccoon").Enable();
@@ -48,6 +49,7 @@ public class RaccoonController : MonoBehaviour
         coll = GetComponent<Collider2D>();
         xAxis = actions.FindActionMap("Raccoon").FindAction("MoveX");
         score = 0;
+        startPos = this.transform.position;
 
     }
     void Update()
@@ -71,21 +73,16 @@ public class RaccoonController : MonoBehaviour
         }
     }
 
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.tag == "Enemy")
-    //     {
-    //         Debug.Log("You died");
-    //     }
-    // }
 
-
+    private void ReInitialize()
+    {
+        this.transform.position = startPos;
+    }
     private void MoveX()
     {
         spriteRenderer.flipX = xAxis.ReadValue<float>() < 0;
 
         if (isCrouching) return;
-        // Debug.Log(speed + tmpSpeed);
         // transform.Translate(xAxis.ReadValue<float>() * (speed + tmpSpeed) * Time.deltaTime, 0f, 0f);
         transform.position += Vector3.right * ((xAxis.ReadValue<float>() * speed) + tmpSpeed) * Time.deltaTime;
         animator.SetFloat("speed", Math.Abs(xAxis.ReadValue<float>()));
@@ -117,6 +114,10 @@ public class RaccoonController : MonoBehaviour
         if (collision.CompareTag("Chestnut"))
         {
             CaughtAChestnut();
+        }
+        if (collision.CompareTag("Void"))
+        {
+            ReInitialize();
         }
     }
     void OnTriggerStay2D(Collider2D collision)
