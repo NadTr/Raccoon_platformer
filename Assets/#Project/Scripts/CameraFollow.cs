@@ -12,6 +12,6 @@ public class CameraFollow : MonoBehaviour
     }
     public void Process()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y , - 10f);
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 2 , - 10f);
     }
 }

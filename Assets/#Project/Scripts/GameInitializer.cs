@@ -12,6 +12,7 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private Transform[] movingPlatformsPos;
     [SerializeField] private float movingPlatformSpeed = 2f;
     [SerializeField] private GameObject prizes;
+    [SerializeField] private ChestNutsManager chestnut;
     [SerializeField] private RaccoonController player;
     [SerializeField] private InputActionAsset actions;
     [SerializeField] private float playerSpeed = 3f;
@@ -41,7 +42,7 @@ public class GameInitializer : MonoBehaviour
     }
     private void InitializeObjects()
     {
-        gm.Initialize(cam, player, prizes, uI, background,  movingPlatforms);
+        gm.Initialize(cam, player, prizes, chestnut, uI, background,  movingPlatforms);
         uI.Initialize(gm);
         cam.Initialize(gm, player.transform);
 

@@ -27,6 +27,7 @@ public class RaccoonController : MonoBehaviour
     private Collider2D coll;
     private int score;
     float tmpSpeed = 0 ;
+    Vector3 startPos;
     void OnEnable()
     {
         actions.FindActionMap("Raccoon").Enable();
@@ -41,6 +42,7 @@ public class RaccoonController : MonoBehaviour
         actions.FindActionMap("Raccoon").FindAction("Crouch").performed -= OnCrouch;
         actions.FindActionMap("Raccoon").FindAction("Crouch").canceled -= OnStandUp;
     }
+
     public void Initialize(GameManager gm, InputActionAsset actions, float playerSpeed, float jumpForce)
     {
         this.gm = gm;
@@ -52,6 +54,7 @@ public class RaccoonController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+        startPos = this.transform.position;
         xAxis = actions.FindActionMap("Raccoon").FindAction("MoveX");
         score = 0;
     }
@@ -74,15 +77,6 @@ public class RaccoonController : MonoBehaviour
             }
         }
     }
-
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.tag == "Enemy")
-    //     {
-    //         Debug.Log("You died");
-    //     }
-    // }
-
 
     private void MoveX()
     {
@@ -110,6 +104,11 @@ public class RaccoonController : MonoBehaviour
         animator.SetBool("on crouch", false);
         isCrouching = false;
     }
+
+    public void Restart()
+    {
+        this.transform.position = startPos;
+    }
     public void CaughtAChestnut()
     {
         score++;
@@ -118,6 +117,14 @@ public class RaccoonController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Void"))
+        {
+            Restart();
+        }
+        if (collision.CompareTag("Finish"))
+        {
+            gm.Finish();
+        }
         if (collision.CompareTag("Chestnut"))
         {
             CaughtAChestnut();

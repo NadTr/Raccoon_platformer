@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChestNutsManager : MonoBehaviour
 {
     // [SerializeField] private Animation youranimation;// = GetComponent<Animation> ();
-    [SerializeField] private float delay = 0.15f;
+    [SerializeField] private float delay = 2.5f;
     private Animator animator;
     void Start()
     {
@@ -18,7 +18,7 @@ public class ChestNutsManager : MonoBehaviour
             StartCoroutine(ChestnutCaught(delay));
         }
     }
-    private IEnumerator ChestnutCaught(float delay = 0.2f)
+    private IEnumerator ChestnutCaught(float delay = 2.5f)
     {
         animator.SetBool("is caught", true);
         yield return new WaitForSeconds(delay);

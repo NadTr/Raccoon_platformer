@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,12 +9,14 @@ public class GameManager : MonoBehaviour
     MovingPlatefromBehavior movingPlatforms;
     private RaccoonController player;
     private GameObject prizes;
-    public void Initialize(CameraFollow cam, RaccoonController player, GameObject prizes, UIManager uI, GameObject background, MovingPlatefromBehavior movingPlatforms)
+    ChestNutsManager chesnut;
+    public void Initialize(CameraFollow cam, RaccoonController player, GameObject prizes, ChestNutsManager chesnut, UIManager uI, GameObject background, MovingPlatefromBehavior movingPlatforms)
     {
         this.uI = uI;   
         this.cam = cam;   
         this.player = player;   
         this.prizes = prizes;   
+        this.chesnut = chesnut;   
         this.background = background;   
         this.movingPlatforms = movingPlatforms;   
     }
@@ -37,6 +40,11 @@ public class GameManager : MonoBehaviour
     
     public void IncreaseCounter()
     {
+
         uI.IncreaseCounter();
+    }
+    public void Finish()
+    {
+        SceneManager.LoadScene("TheEnd");
     }
 }
