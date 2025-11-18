@@ -134,11 +134,11 @@ public class RaccoonController : MonoBehaviour
     {
         if (collision.CompareTag("Moving plateform"))
         {
-            if (collision.GetComponentInParent<MovingPlatefromBehavior>() == null)
+            if (collision.GetComponentInParent<MovingPlateformBehavior>() == null)
             {
                 throw new System.ArgumentException("Prefab doesn't have a componenent that have implement MovingPlatefromBehavior");
             }
-            tmpSpeed = collision.GetComponentInParent<MovingPlatefromBehavior>().GetSpeed();
+            tmpSpeed = collision.GetComponentInParent<MovingPlateformBehavior>().GetSpeed();
             // Debug.Log("moving");
         }
     }
@@ -146,7 +146,7 @@ public class RaccoonController : MonoBehaviour
     {
         if (collision.CompareTag("Moving plateform"))
         {
-             if (collision.GetComponentInParent<MovingPlatefromBehavior>() == null)
+             if (collision.GetComponentInParent<MovingPlateformBehavior>() == null)
             {
                 throw new System.ArgumentException("Prefab doesn't have a componenent that have implement MovingPlatefromBehavior");
             }

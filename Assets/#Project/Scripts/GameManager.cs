@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,17 +7,16 @@ public class GameManager : MonoBehaviour
     private UIManager uI;
     private CameraFollow cam;
     GameObject background;
-    MovingPlatefromBehavior movingPlatforms;
+    private Dictionary<Transform, MovingPlateformBehavior> allMovingPlatforms;
+    private GameObject movingPlatforms;
     private RaccoonController player;
     private GameObject prizes;
-    ChestNutsManager chesnut;
-    public void Initialize(CameraFollow cam, RaccoonController player, GameObject prizes, ChestNutsManager chesnut, UIManager uI, GameObject background, MovingPlatefromBehavior movingPlatforms)
+    public void Initialize(CameraFollow cam, RaccoonController player, GameObject prizes, UIManager uI, GameObject background, GameObject movingPlatforms)
     {
         this.uI = uI;   
         this.cam = cam;   
         this.player = player;   
         this.prizes = prizes;   
-        this.chesnut = chesnut;   
         this.background = background;   
         this.movingPlatforms = movingPlatforms;   
     }
@@ -24,12 +24,18 @@ public class GameManager : MonoBehaviour
     {
         cam.Process();
         player.Process();
-        movingPlatforms.Process();
-
-        // for (int i = 0; i < movingPlatforms.Length; i++)
+        // foreach( KeyValuePair<Transform, MovingPlateformBehavior> kvp in allMovingPlatforms )
         // {
-        //     movingPlatforms[i].Process();
-        // }
+        //     Debug.Log("foreachmovingplateform");
+        //     kvp.Value.Process();
+        // }  
+         for (int i = 0; i < movingPlatforms.transform.childCount; i++)
+        {
+            if (movingPlatforms.transform.GetChild(i).TryGetComponent<MovingPlateformBehavior>(out MovingPlateformBehavior movingPlatform))
+            {
+                movingPlatform.Process();
+            }
+        }
 
         for (int i = 0; i < background.transform.childCount; i++)
         {

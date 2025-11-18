@@ -8,11 +8,11 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private CameraFollow cam;
     [SerializeField] private Grid platforms;
     [SerializeField] private GameObject background;
-    [SerializeField] private MovingPlatefromBehavior movingPlatforms;
-    [SerializeField] private Transform[] movingPlatformsPos;
+    // [SerializeField] private MovingPlatefromBehavior movingPlatforms;
+    [SerializeField] private GameObject movingPlatforms;
     [SerializeField] private float movingPlatformSpeed = 2f;
     [SerializeField] private GameObject prizes;
-    [SerializeField] private ChestNutsManager chestnut;
+    // [SerializeField] private ChestNutsManager chestnut;
     [SerializeField] private RaccoonController player;
     [SerializeField] private InputActionAsset actions;
     [SerializeField] private float playerSpeed = 3f;
@@ -31,18 +31,18 @@ public class GameInitializer : MonoBehaviour
         background = Instantiate(background);
         platforms = Instantiate(platforms);
         // movingPlatforms = Instantiate(movingPlatforms);
-        // for (int i = 0; i < movingPlatforms.Length; i++)
+        // for (int i = 0; i < movingPlatforms.transform.childCount; i++)
         // {
-        //     movingPlatforms[i] = Instantiate(movingPlatforms[i]);
+        //     Instantiate(movingPlatforms.transform.GetChild(i));
         // }
-        // movingPlatforms = Instantiate(movingPlatforms);
+        movingPlatforms = Instantiate(movingPlatforms);
         prizes = Instantiate(prizes);
         player = Instantiate(player);
         
     }
     private void InitializeObjects()
     {
-        gm.Initialize(cam, player, prizes, chestnut, uI, background,  movingPlatforms);
+        gm.Initialize(cam, player, prizes, uI, background, movingPlatforms);
         uI.Initialize(gm);
         cam.Initialize(gm, player.transform);
 
@@ -55,12 +55,15 @@ public class GameInitializer : MonoBehaviour
         player.Initialize(gm, actions, playerSpeed, jumpForce);
         player.gameObject.SetActive(true);
 
-        movingPlatforms.Initialize(gm, movingPlatformsPos, movingPlatformSpeed);
+        // movingPlatforms.Initialize(gm, movingPlatformsPos, movingPlatformSpeed);
 
-        // for (int i = 0; i < movingPlatforms.Length; i++)
-        // {
-        //     movingPlatforms[i].Initialize(gm, cameraSpeed, goRight);
-        // }
+        for (int i = 0; i < movingPlatforms.transform.childCount; i++)
+        {
+            if (movingPlatforms.transform.GetChild(i).TryGetComponent<MovingPlateformBehavior>(out MovingPlateformBehavior movingPlatform))
+            {
+                movingPlatform.Initialize(gm, movingPlatformSpeed, true);
+            }
+        }
         
     }
         

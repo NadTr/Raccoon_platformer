@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 8669165444484919529, guid: 77ff4fe80c408df4fa04f4fcc64c37d4, type: 3}
     - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
       propertyPath: movingPlatformsPos.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
       propertyPath: 'movingPlatformsPos.Array.data[1]'

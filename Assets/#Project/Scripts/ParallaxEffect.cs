@@ -21,7 +21,7 @@ public class ParallaxEffect : MonoBehaviour
 
         transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
 
-        if (temp > startpos + 0.4 * length) startpos += length; 
-        else if (temp < startpos - 0.8 * length) startpos -= length;
+        if (temp > startpos + 0.2f * length) startpos += length; 
+        else if (temp < startpos - 0.9f * length) startpos -= length;
     }
 }

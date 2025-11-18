@@ -2,29 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatefromBehavior : MonoBehaviour
+public class MovingPlateformBehavior : MonoBehaviour
 {
     GameManager gm;
     private float speed;
     private bool goRight;
-    private List<MovingPlatefromBehavior> listOfPlatforms;
 
-    public void Initialize(GameManager gm, Transform[] positions, float speed)
+    public void Initialize(GameManager gm, float speed, bool goRight)
     {
         this.gm = gm;
         this.speed = speed;
-
-        goRight = true;
-        for (int i = 0; i < positions.Length; i++)
-        {
-            Instantiate(this.gameObject, positions[i].position, Quaternion.identity);
-            listOfPlatforms.Add(this);
-        }
+        this.goRight = goRight;
     }
 
     public void Process()
     {
-        Debug.Log("m p process");
+
         Move();
 
         Vector3 origin = transform.position + Vector3.up * 0.4f + (goRight ? 3.5f : -0.5f) * Vector3.right * 1f;
@@ -44,7 +37,7 @@ public class MovingPlatefromBehavior : MonoBehaviour
     }
     private void Move()
     {
-        this.transform.Translate((goRight ? 1f : -1f) * speed * Time.deltaTime, 0f, 0f);
+        transform.Translate((goRight ? 1f : -1f) * speed * Time.deltaTime, 0f, 0f);
     }
 
 }
